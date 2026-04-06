@@ -5,14 +5,44 @@ body { background-color: #F8FAFC; color: #1E293B; line-height: 1.6; }
 a { text-decoration: none; }
 ul { list-style: none; }
 
-/* ================= NAVBAR TOP ================= */
-.top-navbar { background: white; border-bottom: 1px solid #E2E8F0; padding: 15px 0; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1350px; margin: 0 auto; padding: 0 20px;}
-.brand { color: #0F172A; font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-.brand-icon { width: 28px; height: 28px; color: #00B4D8; }
+/* ================= NAVBAR TOP (MODIFICAT PENTRU CENTRARE) ================= */
+.top-navbar { 
+    background: white; 
+    border-bottom: 1px solid #E2E8F0; 
+    padding: 15px 0; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000;
+}
 
-.nav-categories { display: flex; gap: 25px; }
-.nav-categories a { color: #64748B; font-weight: 600; font-size: 15px; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: 0.3s;}
+/* Folosim Grid pentru a crea 3 coloane egale: Logo (stânga), Meniu (centru), Gol (dreapta) */
+.nav-container-centered {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-left { display: flex; justify-content: flex-start; }
+.nav-center { display: flex; justify-content: center; }
+.nav-right { display: flex; justify-content: flex-end; } /* Coloană goală pentru echilibru */
+
+.brand { color: #0F172A; font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.brand-icon { width: 28px; height: 28px; color: #00B4D8; transition: transform 0.3s ease; }
+.brand:hover .brand-icon { transform: rotate(-10deg) scale(1.1); }
+
+.nav-categories { display: flex; gap: 30px; }
+.nav-categories a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
 .nav-categories a:hover, .nav-categories a.active { color: #00B4D8; border-bottom-color: #00B4D8; }
 
 .nav-actions { display: flex; gap: 15px; align-items: center; }
@@ -22,8 +52,8 @@ ul { list-style: none; }
 .btn-primary { background: #00B4D8; border: 1px solid #00B4D8; color: white; }
 .btn-primary:hover { background: #0096B4; border-color: #0096B4; }
 
-/* ================= HERO & SEARCH (PENTRU INDEX) ================= */
-.hero { background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%); padding: 80px 20px 100px; display: flex; align-items: center; justify-content: center; }
+/* ================= HERO & SEARCH ================= */
+.hero { background: linear-gradient(135deg, #0A192F, #00B4D8); padding: 80px 20px 100px; display: flex; align-items: center; justify-content: center; }
 .hero-minimal { min-height: 200px; padding: 60px 20px; background: linear-gradient(135deg, #0A192F, #00B4D8); color: white; text-align: center; }
 .search-bar { background: white; border-radius: 12px; display: flex; align-items: center; width: 100%; max-width: 1050px; padding: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 .search-field { flex: 1; padding: 10px 20px; border-right: 1px solid #E2E8F0; position: relative; }
@@ -53,12 +83,23 @@ ul { list-style: none; }
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
 .green { background: #10B981; } .orange { background: #F59E0B; } .red { background: #EF4444; }
 
-/* Controale Persoane */
-.counter-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 15px; font-weight: 600; }
-.counter-controls { display: flex; align-items: center; gap: 12px; }
-.btn-count { background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;}
-.btn-count:hover { border-color: #00B4D8; color: #00B4D8; }
-.hub-gasca-promo { background: #F0FDF4; border: 1px solid #10B981; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; color: #047857; display: none; }
+/* ================= TRUST BAR (MODIFICAT PENTRU CENTRARE) ================= */
+.trust-bar-index { 
+    display: flex; 
+    justify-content: center; /* Centrează grupul de elemente pe mijloc */
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 60px; /* Distanță egală între ele */
+    padding: 30px 0; 
+    border-bottom: 1px solid #E2E8F0; 
+    margin: 0 auto 40px auto; 
+    max-width: 1200px;
+}
+
+.trust-item { display: flex; align-items: center; gap: 15px; }
+.trust-icon { font-size: 32px; background: #F0F9FF; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #00B4D8; flex-shrink: 0; }
+.trust-text h4 { font-size: 16px; color: #0A192F; margin-bottom: 3px; }
+.trust-text p { font-size: 13px; color: #64748B; margin: 0; }
 
 /* ================= CARDS & LAYOUT ================= */
 .section-title { font-size: 24px; font-weight: 800; color: #0A192F; margin: 60px 0 25px; }
@@ -257,8 +298,16 @@ ul { list-style: none; }
 }
 /* ================= NOI SECȚIUNI INDEX ================= */
 
-/* Bara de Avantaje */
-.trust-bar-index { display: flex; justify-content: space-between; flex-wrap: wrap; padding: 30px 0; border-bottom: 1px solid #E2E8F0; margin-bottom: 40px; }
+/* Bara de Avantaje (Sincronizat cu Trust Bar Centrat) */
+.trust-bar-index { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    padding: 30px 0; 
+    border-bottom: 1px solid #E2E8F0; 
+    margin: 0 auto 40px auto; 
+    max-width: 1200px;
+}
 .trust-item { display: flex; align-items: center; gap: 15px; }
 .trust-icon { font-size: 32px; background: #F0F9FF; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #00B4D8; }
 .trust-text h4 { font-size: 16px; color: #0A192F; margin-bottom: 3px; }
@@ -343,42 +392,10 @@ ul { list-style: none; }
     background: linear-gradient(to top, rgba(10, 25, 47, 0.9) 0%, rgba(10, 25, 47, 0.4) 40%, transparent 100%) !important;
 }
 
-/* NAVBAR SIMETRIC - DESKTOP */
-.top-navbar {
-    background: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-container-centered {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; 
-    align-items: center;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.nav-left { display: flex; justify-content: flex-start; }
-.nav-center { display: flex; justify-content: center; }
-.nav-right { display: flex; justify-content: flex-end; }
-.nav-categories { display: flex; gap: 30px; }
-.nav-categories a {
-    text-decoration: none;
-    color: #475569;
-    font-weight: 600;
-    font-size: 15px;
-    transition: color 0.3s;
-}
-.nav-categories a:hover, .nav-categories a.active { color: #00B4D8; }
-
 /* FIX PENTRU IMAGINI */
 img { max-width: 100%; height: auto; }
 
-/* ================= OPTIMIZARE TOTALĂ MOBIL (ADAUGAT LA FINAL) ================= */
+/* ================= OPTIMIZARE TOTALĂ MOBIL (MODALITĂȚI REZOLVATE) ================= */
 
 @media (max-width: 768px) {
     html, body { overflow-x: hidden !important; width: 100% !important; position: relative; }
@@ -406,7 +423,7 @@ img { max-width: 100%; height: auto; }
         overflow-x: auto !important; 
         padding: 5px 10px !important; 
         width: 100% !important; 
-        justify-content: flex-start !important; 
+        justify-content: center !important; 
         scrollbar-width: none; 
     }
     .nav-categories::-webkit-scrollbar { display: none; }
@@ -442,6 +459,12 @@ img { max-width: 100%; height: auto; }
     .footer-brand, .contact-info li { justify-content: center !important; }
     .footer-bottom { flex-direction: column; text-align: center; }
 
-    /* TRUST BAR */
-    .trust-bar-index { flex-direction: column; gap: 20px; padding: 20px; align-items: center; text-align: center; }
+    /* TRUST BAR PE MOBIL */
+    .trust-bar-index { 
+        flex-direction: column; 
+        gap: 20px; 
+        padding: 20px; 
+        align-items: center; 
+        text-align: center; 
+    }
 }
