@@ -393,3 +393,73 @@ ul { list-style: none; }
 .nav-categories a:hover, .nav-categories a.active {
     color: #00B4D8;
 }
+/* ================= OPTIMIZARE MOBIL (Responsive) ================= */
+
+@media (max-width: 768px) {
+    /* 1. Navbar pe Mobil - Ascundem centrul pentru a nu aglomera */
+    .nav-center {
+        display: none; 
+    }
+    .nav-container-centered {
+        grid-template-columns: 1fr auto; /* Doar logo-ul rămâne vizibil clar */
+    }
+
+    /* 2. Hero Section - Micșorăm textul să nu iasă din ecran */
+    .hero h1 {
+        font-size: 28px !important;
+    }
+    
+    /* 3. Search Bar - Îl facem vertical pe telefon */
+    .search-bar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .search-field {
+        border-right: none !important;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        padding: 15px 0;
+    }
+    .search-btn-large {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    /* 4. Trust Bar - Elementele unul sub altul */
+    .trust-bar-index {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* 5. Grila de Carduri - 1 singur card pe rând pe telefoane mici */
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 6. Masonry (Top Destinații) - Se transformă în listă simplă verticală */
+    .masonry-grid {
+        display: flex;
+        flex-direction: column;
+        grid-template-rows: auto;
+    }
+    .item-tall, .item-wide {
+        height: 250px;
+    }
+
+    /* 7. Footer - Centrăm totul pentru deget */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Fix pentru imagini să nu depășească ecranul niciodată */
+img {
+    max-width: 100%;
+    height: auto;
+}
