@@ -431,11 +431,25 @@ img { max-width: 100%; height: auto; }
         overflow-x: auto !important; 
         padding: 5px 10px !important; 
         width: 100% !important; 
-        justify-content: center !important; 
+        justify-content: center !important; /* Asta ține textul pe mijloc */
         scrollbar-width: none; 
     }
     .nav-categories::-webkit-scrollbar { display: none; }
     .nav-categories a { font-size: 14px !important; white-space: nowrap !important; }
+    
+    .nav-right, .nav-actions { display: none !important; }
+
+    /* TRUST BAR PE MOBIL (Centrare Asigurare, Rate, etc.) */
+    .trust-bar-index { 
+        flex-direction: column !important; 
+        gap: 25px !important; 
+        text-align: center !important; 
+    }
+    
+    .trust-item {
+        width: 100% !important;
+        justify-content: center !important; /* Lipește iconița și textul pe centrul ecranului */
+    }
     
     .nav-right, .nav-actions { display: none !important; }
 
@@ -468,11 +482,29 @@ img { max-width: 100%; height: auto; }
     .footer-bottom { flex-direction: column; text-align: center; }
 
     /* TRUST BAR PE MOBIL */
-    .trust-bar-index { 
-        flex-direction: column; 
-        gap: 20px; 
-        padding: 20px; 
-        align-items: center; 
-        text-align: center; 
-    }
+/* ================= TRUST BAR (CENTRARE MATEMATICĂ) ================= */
+.trust-bar-index { 
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important;
+    flex-wrap: wrap !important; 
+    gap: 50px !important; /* Spațiu perfect egal între cele 4 elemente */
+    padding: 30px 20px !important; 
+    border-bottom: 1px solid #E2E8F0 !important; 
+    margin: 0 auto 40px auto !important; 
+    max-width: 1200px !important;
+    width: 100% !important;
+}
+
+.trust-item { 
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important; 
+    gap: 15px !important; 
+}
+
+.trust-icon { font-size: 32px; background: #F0F9FF; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #00B4D8; flex-shrink: 0; }
+.trust-text { text-align: left; }
+.trust-text h4 { font-size: 16px; color: #0A192F; margin-bottom: 3px; }
+.trust-text p { font-size: 13px; color: #64748B; margin: 0; }
 }
