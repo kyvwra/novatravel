@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilete de Avion | NovaTravel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="top-navbar">
+    <div class="nav-container-centered">
+        <div class="nav-left">
+            <a href="index.html" class="brand" style="text-decoration: none;">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                <span style="font-weight: 800; color: #0F172A; margin-left: 8px;">NovaTravel</span>
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <div class="nav-categories">
+                <a href="index.html">Pachete</a>
+                <a href="exotic.html">Exotic</a>
+                <a href="bilete.html">Bilete avion</a>
+                <a href="circuite.html">Circuite</a>
+            </div>
+        </div>
+
+        <div class="nav-right"></div>
+    </div>
+</nav>
+
+    <header class="hero-minimal" style="min-height: 200px; padding: 60px 20px; background: linear-gradient(135deg, #0A192F, #00B4D8); color: white; text-align: center;">
+        <h1 style="font-size: 38px; margin-bottom: 10px;">Găsește Zborul Tău</h1>
+        <p style="font-size: 18px; opacity: 0.9;">Bilete dus-întors către destinațiile tale preferate, fără costuri ascunse.</p>
+    </header>
+
+   <main class="container" style="max-width: 1350px; margin-top: 40px; margin-bottom: 80px;">
+        <div class="main-layout" style="display: flex; gap: 30px; align-items: flex-start;">
+            
+            <aside class="sidebar-filters" style="width: 280px; flex-shrink: 0; position: sticky; top: 20px;">
+                <div class="filter-card" style="background: white; padding: 25px; border-radius: 15px; border: 1px solid #E2E8F0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                    <h3 style="font-size: 18px; margin-bottom: 20px; color: #0A192F; border-bottom: 2px solid #00B4D8; display: inline-block; padding-bottom: 5px;">Filtrează</h3>
+                    
+                    <div class="filter-group" style="margin-bottom: 25px;">
+                        <label style="display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 10px;">BUGET MAXIM: <b id="priceValue" style="color: #00B4D8; font-size: 16px;">1500€</b></label>
+                        <input type="range" id="priceFilter" min="50" max="1500" value="1500" style="width: 100%; cursor: pointer; accent-color: #00B4D8;">
+                    </div>
+
+                    <div class="filter-group" style="margin-bottom: 25px;">
+                        <label style="display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 10px;">RATING COMPANIE/CAZARE</label>
+                        <div class="stars-filter" style="display: flex; flex-direction: column; gap: 8px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer;"><input type="checkbox" class="star-check" value="5" checked style="accent-color: #00B4D8;"> ⭐⭐⭐⭐⭐ (5)</label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer;"><input type="checkbox" class="star-check" value="4" checked style="accent-color: #00B4D8;"> ⭐⭐⭐⭐ (4)</label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer;"><input type="checkbox" class="star-check" value="3" checked style="accent-color: #00B4D8;"> ⭐⭐⭐ (3)</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group" style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 10px;">SERVICII LA BORD</label>
+                        <select id="mealFilter" class="filter-select" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #CBD5E1; background: #F8FAFC; font-weight: 600; color: #1E293B; outline: none; cursor: pointer;">
+                            <option value="Toate">Toate tipurile</option>
+                            <option value="All Inclusive">Premium (Masă Inclusă)</option>
+                            <option value="Mic Dejun">Gustare Inclusă</option>
+                            <option value="Fără Masă">Low Cost (Fără Masă)</option>
+                        </select>
+                    </div>
+
+                    <button id="applyFiltersBtn" class="nav-btn btn-primary" style="width: 100%; padding: 12px; font-weight: 700;">Aplică Filtre</button>
+                </div>
+            </aside>
+
+            <section class="results-area" style="flex: 1;">
+                <h2 class="section-title" style="margin-top: 0;">21 de Destinații Populare</h2>
+                <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    
+                    <div class="card" data-stars="5" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80');"></div><div class="card-content"><h3 class="card-title">Paris</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.8/5 (320 recenzii) | ✈️ 5 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Franța</p><div class="card-price"><div class="price-new">120€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Roma.jpg');"></div><div class="card-content"><h3 class="card-title">Roma</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.5/5 (210 recenzii) | ✈️ 4 Stele | 🍽️ Low Cost</p><p class="card-route">Italia</p><div class="card-price"><div class="price-new">85€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Fără Masă"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80');"></div><div class="card-content"><h3 class="card-title">Londra</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.4/5 (180 recenzii) | ✈️ 4 Stele | 🍽️ Low Cost</p><p class="card-route">Marea Britanie</p><div class="card-price"><div class="price-new">90€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('img/Barcelona.jpg');"></div><div class="card-content"><h3 class="card-title">Barcelona</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.7/5 (410 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Spania</p><div class="card-price"><div class="price-new">140€</div></div></div></div>
+                    <div class="card" data-stars="3" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Madrid.jpg');"></div><div class="card-content"><h3 class="card-title">Madrid</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.2/5 (115 recenzii) | ✈️ 3 Stele | 🍽️ Low Cost</p><p class="card-route">Spania</p><div class="card-price"><div class="price-new">130€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('img/Berlin.jpg');"></div><div class="card-content"><h3 class="card-title">Berlin</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.6/5 (230 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Germania</p><div class="card-price"><div class="price-new">110€</div></div></div></div>
+                    <div class="card" data-stars="3" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Viena.jpg');"></div><div class="card-content"><h3 class="card-title">Viena</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.3/5 (95 recenzii) | ✈️ 3 Stele | 🍽️ Low Cost</p><p class="card-route">Austria</p><div class="card-price"><div class="price-new">60€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('img/Amsterdam.jpg');"></div><div class="card-content"><h3 class="card-title">Amsterdam</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.8/5 (340 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Olanda</p><div class="card-price"><div class="price-new">160€</div></div></div></div>
+                    <div class="card" data-stars="3" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Atena.jpg');"></div><div class="card-content"><h3 class="card-title">Atena</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.1/5 (180 recenzii) | ✈️ 3 Stele | 🍽️ Low Cost</p><p class="card-route">Grecia</p><div class="card-price"><div class="price-new">95€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/Lisabona.jpg');"></div><div class="card-content"><h3 class="card-title">Lisabona</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.9/5 (410 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">Portugalia</p><div class="card-price"><div class="price-new">180€</div></div></div></div>
+                    <div class="card" data-stars="3" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Praga.jpg');"></div><div class="card-content"><h3 class="card-title">Praga</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.4/5 (220 recenzii) | ✈️ 3 Stele | 🍽️ Low Cost</p><p class="card-route">Cehia</p><div class="card-price"><div class="price-new">100€</div></div></div></div>
+                    <div class="card" data-stars="3" data-meal="Fără Masă"><div class="card-img" style="background-image: url('img/Budapesta.jpg');"></div><div class="card-content"><h3 class="card-title">Budapesta</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.2/5 (150 recenzii) | ✈️ 3 Stele | 🍽️ Low Cost</p><p class="card-route">Ungaria</p><div class="card-price"><div class="price-new">50€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('img/Istanbul.jpg');"></div><div class="card-content"><h3 class="card-title">Istanbul</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.6/5 (310 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Turcia</p><div class="card-price"><div class="price-new">125€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/Dubai.jpg');"></div><div class="card-content"><h3 class="card-title">Dubai</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.9/5 (560 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">EAU</p><div class="card-price"><div class="price-new">250€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/New York.jpg');"></div><div class="card-content"><h3 class="card-title">New York</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.8/5 (420 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">SUA</p><div class="card-price"><div class="price-new">450€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/Tokyo.jpg');"></div><div class="card-content"><h3 class="card-title">Tokyo</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.9/5 (600 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">Japonia</p><div class="card-price"><div class="price-new">780€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/Bangkok.jpg');"></div><div class="card-content"><h3 class="card-title">Bangkok</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.7/5 (380 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">Thailanda</p><div class="card-price"><div class="price-new">650€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('img/Singapore.jpg');"></div><div class="card-content"><h3 class="card-title">Singapore</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.9/5 (450 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">Singapore</p><div class="card-price"><div class="price-new">820€</div></div></div></div>
+                    <div class="card" data-stars="5" data-meal="All Inclusive"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=600&q=80');"></div><div class="card-content"><h3 class="card-title">Sydney</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.8/5 (310 recenzii) | ✈️ 5 Stele | 🍽️ Premium</p><p class="card-route">Australia</p><div class="card-price"><div class="price-new">1200€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=600&q=80');"></div><div class="card-content"><h3 class="card-title">Rio de Janeiro</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.6/5 (280 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Brazilia</p><div class="card-price"><div class="price-new">950€</div></div></div></div>
+                    <div class="card" data-stars="4" data-meal="Mic Dejun"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=600&q=80');"></div><div class="card-content"><h3 class="card-title">Toronto</h3><p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.7/5 (190 recenzii) | ✈️ 4 Stele | 🍽️ Gustare Inclusă</p><p class="card-route">Canada</p><div class="card-price"><div class="price-new">520€</div></div></div></div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="mega-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <div class="footer-brand">
+    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; margin-right: 8px;">
+        <path d="M22 2L11 13"></path>
+        <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+    </svg>
+    <span style="font-size: 22px; font-weight: 800; color: white;">NovaTravel</span>
+</div>
+                    <p style="margin-top: 15px; color: #94A3B8; font-size: 14px; line-height: 1.6;">
+                        Agenția ta de turism premium. Peste 10 ani de experiență în crearea unor vacanțe memorabile și sigure în întreaga lume.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informații Utile</h4>
+                    <ul>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact & Sedii</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Asigurări de călătorie</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Vacanțele Tale</h4>
+                    <ul>
+                        <li><a href="exotic.html">Destinații Exotice</a></li>
+                        <li><a href="circuite.html">Circuite Culturale</a></li>
+                        <li><a href="index.html">Oferte Last Minute</a></li>
+                        <li><a href="bilete.html">Bilete de Avion</a></li>
+                        <li><a href="#">City Breaks</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact & Newsletter</h4>
+                    <ul class="contact-info">
+                        <li>📞 <a href="tel:+40700000000">0700 000 000</a></li>
+                        <li>✉️ <a href="mailto:contact@novatravel.ro">contact@novatravel.ro</a></li>
+                        <li>📍 București, Str. Vacanței Nr. 10</li>
+                    </ul>
+                    <div class="newsletter-box" style="margin-top: 15px;">
+                        <input type="email" placeholder="Adresa ta de e-mail..." style="width: 100%; padding: 10px; border-radius: 6px; border: none; outline: none; margin-bottom: 10px; font-size: 14px;">
+                        <button class="nav-btn btn-primary" style="width: 100%; padding: 10px;">Abonează-te</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2026 <b>NovaTravel</b>. Toate drepturile rezervate. <br>
+                    <span style="font-size: 12px; color: #64748B;">Licență Turism nr. 1234 / Poliță Asigurare: Seria X Nr. 98765</span>
+                </div>
+                <div class="footer-social">
+                    <a href="#" title="Facebook" style="font-size: 20px;">📘</a>
+                    <a href="#" title="Instagram" style="font-size: 20px;">📸</a>
+                    <a href="#" title="TikTok" style="font-size: 20px;">🎵</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<div id="chatBtn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #00B4D8; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,180,216,0.4); z-index: 3000;">🤖</div>
+    
+    <div id="chatBox" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 360px; background: white; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 3000; overflow: hidden; border: 1px solid #E2E8F0;">
+        <div style="background: linear-gradient(135deg, #0A192F, #00B4D8); padding: 15px 20px; color: white; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="margin: 0; font-size: 16px;">🤖 NovaBot</h4>
+                <p style="margin: 2px 0 0; font-size: 12px; opacity: 0.9;">Asistent Virtual 24/7</p>
+            </div>
+            <span id="closeChat" style="cursor: pointer; font-size: 22px; font-weight: bold; line-height: 1;">&times;</span>
+        </div>
+        
+        <div id="chatContent" style="height: 400px; overflow-y: auto; padding: 20px; display: flex; flex-direction: column;">
+            
+            <div style="background: #F1F5F9; padding: 12px; border-radius: 12px; font-size: 13px; color: #1E293B; margin-bottom: 15px;">
+                Salut! 👋 Alege o întrebare:
+            </div>
+            
+            <div class="chat-options" style="display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 15px; border-bottom: 1px solid #E2E8F0; margin-bottom: 15px;">
+                <button class="chat-q" data-ans="Acceptăm plata cu cardul online, transfer bancar, numerar în agenție și vouchere de vacanță.">💳 Cum pot plăti?</button>
+                <button class="chat-q" data-ans="Da! Oferim plata în 6 până la 12 rate fără dobândă prin TBI Bank sau CardAvantaj.">📉 Pot plăti în rate?</button>
+                <button class="chat-q" data-ans="La tariful Flexibil, anularea e gratuită cu până la 48h înainte. Pentru restul se aplică condițiile din contract.">❌ Condiții anulare?</button>
+                <button class="chat-q" data-ans="Majoritatea zborurilor includ un bagaj mic de mână (10kg). Bagajul de cală e opțional.">🧳 Cât bagaj am inclus?</button>
+                <button class="chat-q" data-ans="Copiii sub 2 ani zboară gratuit. Cei până în 12 ani au reduceri mari la cazare.">👶 Reduceri copii?</button>
+                <button class="chat-q" data-ans="În UE călătorești cu buletinul. Destinațiile exotice (și Turcia/Egipt) necesită pașaport valabil minim 6 luni.">🛂 Pașaport sau buletin?</button>
+                <button class="chat-q" data-ans="Pachetele includ asigurare medicală standard. Recomandăm și Asigurarea Storno.">🛡️ Ce asigurare am?</button>
+                <button class="chat-q" data-ans="Standardul internațional: Check-in la ora 14:00, Check-out la ora 11:00.">🏨 Ora de Check-in?</button>
+                <button class="chat-q" data-ans="Avem o selecție de hoteluri pet-friendly. Sună-ne pentru a găsi cea mai bună opțiune.">🐶 Pot lua câinele?</button>
+                <button class="chat-q" data-ans="La rezervare primești un număr de WhatsApp de urgență disponibil 24/7.">📞 Suport în vacanță?</button>
+                <button class="chat-q" data-ans="Pentru Bali, Sri Lanka sau Egipt, viza se obține online sau direct la sosire în aeroport.">🛂 E nevoie de viză?</button>
+                <button class="chat-q" data-ans="Da, dar modificarea numelui implică taxe percepute de compania aeriană (50€ - 150€).">✏️ Pot schimba numele?</button>
+                <button class="chat-q" data-ans="Acceptăm tichete (Sodexo, Edenred, Up) EXCLUSIV pentru cazările din România.">🎫 Vouchere vacanță?</button>
+                <button class="chat-q" data-ans="Documentele finale (bilete, vouchere) vin pe e-mail cu 3-5 zile înainte de plecare.">📧 Cum primesc biletele?</button>
+                <button class="chat-q" data-ans="Zborurile charter sunt zboruri directe închiriate pentru destinațiile de vacanță. Orarele se pot modifica.">🛫 Ce e un zbor charter?</button>
+            </div>
+
+            <div id="chatHistory" style="display: flex; flex-direction: column; gap: 12px;"></div>
+            
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2>Conectare / Log-in</h2>
+            <form action="#" method="POST">
+                <div class="form-group"><label>Adresa de e-mail</label><input type="email" required></div>
+                <div class="form-group"><label>Parolă</label><input type="password" required></div>
+                <button type="submit" class="nav-btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px;">Conectare</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-content detail-modal">
+            <span id="closeDetails" class="close-btn">&times;</span>
+            <div class="modal-hero-img" id="modalImg"></div>
+            <div class="modal-body">
+                <div class="modal-header-info">
+                    <h2 id="modalTitle">Titlu</h2>
+                    <div class="rating" id="modalRating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Preț per persoană</span>
+                        <span class="info-value price-highlight" id="modalPrice">0 €</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Ce include:</span>
+                        <ul class="include-list" id="modalIncludes"></ul>
+                    </div>
+                </div>
+                <p class="cancellation-text" style="margin-top: 20px;">❌ <b>Anulare gratuită</b> cu până la 48h înainte de plecare.</p>
+                <button class="nav-btn btn-primary" style="width: 100%; padding: 15px; font-size: 18px; margin-top: 20px;">Rezervă acum</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

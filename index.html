@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTravel - Găsește vacanța perfectă</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* FIX ALINIERE NAVBAR CENTRAL */
+        .nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .nav-categories {
+            grid-column: 2;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+        .nav-actions {
+            grid-column: 3;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .brand {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand" style="text-decoration: none;">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                <span style="font-weight: 800; color: #0F172A; margin-left: 8px;">NovaTravel</span>
+            </a>
+            <div class="nav-categories">
+                <a href="index.html" class="active">Pachete</a>
+                <a href="exotic.html">Exotic</a>
+                <a href="bilete.html">Bilete avion</a>
+                <a href="circuite.html">Circuite</a>
+            </div>
+            <div class="nav-actions">
+                <button id="btnContulMeu" class="nav-btn btn-primary">Contul meu</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="background: linear-gradient(135deg, #0A192F, #00B4D8); flex-direction: column;">
+        <div style="text-align: center; color: white; margin-bottom: 40px; width: 100%;">
+            <h1 style="font-size: 42px; margin-bottom: 10px;">Începe Aventura Ta Aici</h1>
+            <p style="font-size: 18px; opacity: 0.9;">Peste 35 de destinații, zboruri și circuite premium.</p>
+        </div>
+        <div class="search-bar">
+            <div class="search-field" id="destContainer">
+                <label>Unde mergi?</label>
+                <input type="text" id="destInput" placeholder="Ex: Paris, Tokyo..." autocomplete="off">
+                <div class="dropdown-menu" id="destDropdown"></div>
+            </div>
+            <div class="search-field" id="calendarContainer">
+                <label>Perioadă</label>
+                <input type="text" id="dateRange" value="Selectează datele" readonly style="cursor:pointer;">
+                <div class="dropdown-menu calendar-dropdown" id="calendarDropdown">
+                    <div class="calendar-header"><button id="prevMonth">←</button><span>August 2026</span><button id="nextMonth">→</button></div>
+                    <div class="calendar-grid-header"><span>Lu</span><span>Ma</span><span>Mi</span><span>Jo</span><span>Vi</span><span>Sâ</span><span>Du</span></div>
+                    <div class="calendar-days" id="calendarDays"></div>
+                    <div class="calendar-legend"><span class="dot green"></span> Ieftin <span class="dot orange"></span> Mediu <span class="dot red"></span> Scump</div>
+                </div>
+            </div>
+            <div class="search-field" id="personsContainer">
+                <label>Călători</label>
+                <input type="text" id="personsInput" value="2 Adulți" readonly style="cursor:pointer;">
+                <div class="dropdown-menu" id="personsDropdown">
+                    <div class="counter-row"><span>👨 Adulți (18+)</span><div class="counter-controls"><button class="btn-count" id="btnAdultMinus">-</button><span id="adultsCount">2</span><button class="btn-count" id="btnAdultPlus">+</button></div></div>
+                    <div class="counter-row"><span>👧 Copii (0-17)</span><div class="counter-controls"><button class="btn-count" id="btnChildMinus">-</button><span id="childrenCount">0</span><button class="btn-count" id="btnChildPlus">+</button></div></div>
+                    <div class="hub-gasca-promo" id="gascaPromo">🚀 <b>Sunteți o gașcă mare?</b><br>Găsiți cazări împreună cu Hub-ul de Gașcă.</div>
+                </div>
+            </div>
+            <button class="search-btn-large" id="mainSearchBtn">Caută</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="trust-bar-index">
+            <div class="trust-item"><div class="trust-icon">🛡️</div><div class="trust-text"><h4>Asigurare Inclusă</h4><p>Călătorești fără griji oriunde.</p></div></div>
+            <div class="trust-item"><div class="trust-icon">💳</div><div class="trust-text"><h4>Plată în Rate</h4><p>Până la 12 rate fără dobândă.</p></div></div>
+            <div class="trust-item"><div class="trust-icon">📞</div><div class="trust-text"><h4>Suport 24/7</h4><p>Suntem la un telefon distanță.</p></div></div>
+            <div class="trust-item"><div class="trust-icon">❌</div><div class="trust-text"><h4>Anulare Flexibilă</h4><p>Banii înapoi cu 48h înainte.</p></div></div>
+        </div>
+
+        <h2 class="section-title">🔥 Oferte Last Minute</h2>
+        <div class="cards-grid">
+            <div class="card" data-rating="⭐⭐⭐⭐⭐" data-reviews="342" data-includes="Zbor direct Tokyo|Cazare Hotel 5*|Ghid local expert|Asigurare medicală">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"><span class="badge-urgent">⏳ Ultimele 2 locuri</span></div>
+                <div class="card-content">
+                    <h3 class="card-title">Magia Japoniei</h3>
+                    <p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.9/5 (342 recenzii) | 🏨 5 Stele | 🍽️ Mic Dejun</p>
+                    <p class="card-route">Tokyo, Kyoto, Osaka • 10 zile</p>
+                    <div class="card-price"><div><span class="price-old">1450€</span><div class="price-new">1190€</div></div></div>
+                </div>
+            </div>
+            <div class="card" data-rating="⭐⭐⭐⭐" data-reviews="156" data-includes="Zbor dus-întors Delhi|Pensiune completă|Taj Mahal Tour|Transfer VIP">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"><span class="badge-urgent">🔥 Plecare în 5 zile</span></div>
+                <div class="card-content">
+                    <h3 class="card-title">Comorile Indiei</h3>
+                    <p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.4/5 (156 recenzii) | 🏨 4 Stele | 🍽️ Pensiune Completă</p>
+                    <p class="card-route">Delhi, Agra, Jaipur • 7 zile</p>
+                    <div class="card-price"><div><span class="price-old">1100€</span><div class="price-new">890€</div></div></div>
+                </div>
+            </div>
+            <div class="card" data-rating="⭐⭐⭐⭐⭐" data-reviews="210" data-includes="Safari 4x4 Sahara|Cazare Luxury Glamping|Cină sub stele|Ghid privat">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Aventura Marocană</h3>
+                    <p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.8/5 (210 recenzii) | 🏨 5 Stele | 🍽️ Demipensiune</p>
+                    <p class="card-route">Marrakech & Sahara • 8 zile</p>
+                    <div class="card-price"><div><span class="price-old">950€</span><div class="price-new">750€</div></div></div>
+                </div>
+            </div>
+            <div class="card" data-rating="⭐⭐⭐⭐" data-reviews="489" data-includes="Zbor inclus|Cazare Hotel Central|Tur pietonal ghidat|Mic dejun inclus">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">City Break Roma</h3>
+                    <p style="font-size: 12px; color: #64748B; margin-bottom: 5px;">⭐ 4.6/5 (489 recenzii) | 🏨 4 Stele | 🍽️ Mic Dejun</p>
+                    <p class="card-route">Zbor + Cazare centrală • 4 zile</p>
+                    <div class="card-price"><div><span class="price-old">450€</span><div class="price-new">299€</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flash-sale">
+            <div class="flash-sale-content">
+                <h3>⚡ Flash Sale: Exotice 2026</h3>
+                <p style="font-size: 16px; margin-top: 5px; opacity: 0.9;">Rezervă acum pentru iarnă și primești până la -40% reducere!</p>
+            </div>
+            <div class="countdown">
+                <div class="time-box"><span id="days">03</span><p>Zile</p></div>
+                <div class="time-box"><span id="hours">14</span><p>Ore</p></div>
+                <div class="time-box"><span id="mins">30</span><p>Min</p></div>
+                <div class="time-box"><span id="secs">59</span><p>Sec</p></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Cele mai dorite destinații</h2>
+        <div class="masonry-grid">
+            <div class="masonry-item item-tall" data-rating="⭐⭐⭐⭐⭐" data-reviews="820" data-includes="Vila cu piscină privată|Zbor Qatar Airways|Transfer VIP|Mic dejun floating">
+                <span class="masonry-badge">1530€</span>
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Bali">
+                <div class="masonry-content">
+                    <h3>Bali, Indonezia</h3>
+                    <p style="font-size: 11px; opacity: 0.9;">⭐ 4.9/5 (820 recenzii) | 🏨 5 Stele</p>
+                    <p class="card-route">Paradisul spiritual</p>
+                </div>
+            </div>
+            <div class="masonry-item" data-rating="⭐⭐⭐⭐⭐" data-reviews="560" data-includes="Tur privat Colosseum|Hotel 5*|Cină romantică|Asistență 24/7">
+                <span class="masonry-badge">299€</span>
+                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" alt="Roma">
+                <div class="masonry-content"><h3>Roma, Italia</h3><p style="font-size: 11px;">⭐ 4.7/5 (560 recenzii)</p></div>
+            </div>
+            <div class="masonry-item" data-rating="⭐⭐⭐⭐⭐" data-reviews="912" data-includes="Vedere Turnul Eiffel|Zbor inclus|Bilete Disneyland|Croazieră Sena">
+                <span class="masonry-badge">120€</span>
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80" alt="Paris">
+                <div class="masonry-content"><h3>Paris, Franța</h3><p style="font-size: 11px;">⭐ 4.8/5 (912 recenzii)</p></div>
+            </div>
+            <div class="masonry-item item-wide" data-rating="⭐⭐⭐⭐⭐" data-reviews="1240" data-includes="Resort Luxury apă|Zbor Emirates|Transfer hidroavion|Snorkeling inclus">
+                <span class="masonry-badge">2400€</span>
+                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80" alt="Maldive">
+                <div class="masonry-content"><h3>Maldive</h3><p style="font-size: 11px;">⭐ 5.0/5 (1.2k recenzii)</p></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Inspiră-te după vibe</h2>
+        <div class="vibes-nav">
+            <div class="vibe-pill active" data-target="vibe-aventura">Rucsac & Aventură</div>
+            <div class="vibe-pill" data-target="vibe-degustare">Degustare & Podgorii</div>
+            <div class="vibe-pill" data-target="vibe-retreat">Retreat & Zen</div>
+            <div class="vibe-pill" data-target="vibe-castele">Castele & Istorie</div>
+        </div>
+
+        <div id="vibe-aventura" class="vibe-content active banners-grid">
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="95" data-includes="Safari privat|Ghid montan|Echipament explorare|Pachet Foto">
+                <div class="banner-content"><h3>Evadări în Doi</h3><p>Pachete romantice cu ghid privat.</p></div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐" data-reviews="42" data-includes="Cazare Hostel Boutique|Bilet Interrail|Grup WhatsApp|Tururi gratuite">
+                <div class="banner-content"><h3>Aventuri Solo</h3><p>Găsește-ți gașca de exploratori.</p></div>
+            </div>
+        </div>
+
+        <div id="vibe-degustare" class="vibe-content banners-grid">
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="128" data-includes="Vizită 3 podgorii|Cazare Vila Toscana|Curs de gătit|Închiriere Fiat 500">
+                <div class="banner-content"><h3>Toscana Autentică</h3><p>Degustări premium și cazare la conac.</p></div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="84" data-includes="Tur crame Bordeaux|Zbor inclus|Degustare brânzeturi|Somelier român">
+                <div class="banner-content"><h3>Traseul Vinului, Franța</h3><p>Bordeaux și secretele vinului franțuzesc.</p></div>
+            </div>
+        </div>
+
+        <div id="vibe-retreat" class="vibe-content banners-grid">
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="310" data-includes="Sesiuni Yoga zilnice|Mâncare organică|Masaj inclus|Meditație">
+                <div class="banner-content"><h3>Yoga Bali Retreat</h3><p>Reconectare cu tine în natură.</p></div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="195" data-includes="Acces Spa Thermal|Hotel 4* Superior|Tratamente incluse|Băi de aburi">
+                <div class="banner-content"><h3>Spa & Wellness Alpi</h3><p>Băi termale și liniște deplină.</p></div>
+            </div>
+        </div>
+
+        <div id="vibe-castele" class="vibe-content banners-grid">
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐⭐" data-reviews="270" data-includes="Tur Neuschwanstein|Zbor Munchen|Transport autocar|Intrări incluse">
+                <div class="banner-content"><h3>Castelele Bavariei</h3><p>Pe urmele regilor din Germania.</p></div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80');" data-rating="⭐⭐⭐⭐" data-reviews="145" data-includes="Tur Loch Ness|Cazare castel istoric|Degustare Whisky|Ghid scoțian">
+                <div class="banner-content"><h3>Misterul Scoției</h3><p>Ruine antice și castele pe stânci.</p></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Jurnalul Călătorului</h2>
+        <div class="blog-grid">
+            <div class="blog-card" data-full-text="Un safari în Kenya este o aventură de neuitat. Cele mai bune luni sunt Iulie-Septembrie pentru marea migrație. Recomandăm haine în culori neutre și protecție solară bio.">
+                <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Ghiduri Utile</span>
+                    <h3>Ce să nu uiți în bagaj pentru un safari autentic în Kenya</h3>
+                    <p>Sfaturi de la ghizii noștri pentru o experiență perfectă.</p>
+                    <span class="read-more">Citește articolul →</span>
+                </div>
+            </div>
+            <div class="blog-card" data-full-text="Grecia ascunde plaje ireale. Vizitați Milos pentru peisaje lunare sau Zakynthos pentru ape turcoaz. Tavernele locale servesc cel mai bun pește proaspăt.">
+                <div class="blog-img" style="background-image: url('img/Top%20Destinatii.jpg');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Top Destinații</span>
+                    <h3>5 Plaje ascunse din Grecia pe care trebuie să le vezi vara asta</h3>
+                    <p>Departe de aglomerație, am descoperit perlele Mării Ionice.</p>
+                    <span class="read-more">Citește articolul →</span>
+                </div>
+            </div>
+            <div class="blog-card" data-full-text="Actualizări importante pentru 2026: Viza pentru Thailanda se obține acum gratuit la sosire pentru 30 zile. Pentru Bali este necesară plata taxei turistice online.">
+                <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Informații</span>
+                    <h3>Vize și acte necesare: Tot ce trebuie să știi pentru Asia în 2026</h3>
+                    <p>Actualizări importante despre obținerea vizelor pentru Bali și Thailanda.</p>
+                    <span class="read-more">Citește articolul →</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mega-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; margin-right: 8px;">
+                            <path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                        </svg>
+                        <span style="font-size: 22px; font-weight: 800; color: white;">NovaTravel</span>
+                    </div>
+                    <p style="margin-top: 15px; color: #94A3B8; font-size: 14px; line-height: 1.6;">
+                        Agenția ta de turism premium. Peste 10 ani de experiență în crearea unor vacanțe memorabile și sigure în întreaga lume.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Informații Utile</h4>
+                    <ul>
+                        <li><a href="#">Despre Noi</a></li>
+                        <li><a href="#">Contact & Sedii</a></li>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Asigurări de călătorie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Vacanțele Tale</h4>
+                    <ul>
+                        <li><a href="exotic.html">Destinații Exotice</a></li>
+                        <li><a href="circuite.html">Circuite Culturale</a></li>
+                        <li><a href="index.html">Oferte Last Minute</a></li>
+                        <li><a href="bilete.html">Bilete de Avion</a></li>
+                        <li><a href="#">City Breaks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact & Newsletter</h4>
+                    <ul class="contact-info">
+                        <li>📞 <a href="tel:+40700000000">0700 000 000</a></li>
+                        <li>✉️ <a href="mailto:contact@novatravel.ro">contact@novatravel.ro</a></li>
+                        <li>📍 București, Str. Vacanței Nr. 10</li>
+                    </ul>
+                    <div class="newsletter-box" style="margin-top: 15px;">
+                        <input type="email" placeholder="Adresa ta de e-mail..." style="width: 100%; padding: 10px; border-radius: 6px; border: none; outline: none; margin-bottom: 10px; font-size: 14px;">
+                        <button class="nav-btn btn-primary" style="width: 100%; padding: 10px;">Abonează-te</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">&copy; 2026 <b>NovaTravel</b>. Toate drepturile rezervate. <br><span style="font-size: 12px; color: #64748B;">Licență Turism nr. 1234 / Poliță Asigurare: Seria X Nr. 98765</span></div>
+                <div class="footer-social"><a href="#" title="Facebook">📘</a> <a href="#" title="Instagram">📸</a> <a href="#" title="TikTok">🎵</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="chatBtn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #00B4D8; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,180,216,0.4); z-index: 3000;">🤖</div>
+    <div id="chatBox" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 360px; background: white; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 3000; overflow: hidden; border: 1px solid #E2E8F0;">
+        <div style="background: linear-gradient(135deg, #0A192F, #00B4D8); padding: 15px 20px; color: white; display: flex; justify-content: space-between; align-items: center;"><div><h4 style="margin: 0; font-size: 16px;">🤖 NovaBot</h4><p style="margin: 2px 0 0; font-size: 12px; opacity: 0.9;">Asistent Virtual 24/7</p></div><span id="closeChat" style="cursor: pointer; font-size: 22px;">&times;</span></div>
+        <div id="chatContent" style="height: 400px; overflow-y: auto; padding: 20px;">
+            <div style="background: #F1F5F9; padding: 12px; border-radius: 12px; font-size: 13px; color: #1E293B; margin-bottom: 15px;">Salut! 👋 Alege o întrebare:</div>
+            <div class="chat-options" style="display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 15px; border-bottom: 1px solid #E2E8F0; margin-bottom: 15px;">
+                <button class="chat-q" data-ans="Acceptăm plata cu cardul online, transfer bancar, numerar în agenție și vouchere de vacanță.">💳 Cum pot plăti?</button>
+                <button class="chat-q" data-ans="Da! Oferim plata în 6 până la 12 rate fără dobândă prin TBI Bank sau CardAvantaj.">📉 Pot plăti în rate?</button>
+                <button class="chat-q" data-ans="La tariful Flexibil, anularea e gratuită cu până la 48h înainte. Pentru restul se aplică condițiile din contract.">❌ Condiții anulare?</button>
+                <button class="chat-q" data-ans="Majoritatea zborurilor includ un bagaj mic de mână (10kg). Bagajul de cală e opțional.">🧳 Cât bagaj am inclus?</button>
+                <button class="chat-q" data-ans="Copiii sub 2 ani zboară gratuit. Cei până în 12 ani au reduceri mari la cazare.">👶 Reduceri copii?</button>
+                <button class="chat-q" data-ans="În UE călătorești cu buletinul. Destinațiile exotice (și Turcia/Egipt) necesită pașaport valabil minim 6 luni.">🛂 Pașaport sau buletin?</button>
+                <button class="chat-q" data-ans="Pachetele includ asigurare medicală standard. Recomandăm și Asigurarea Storno.">🛡️ Ce asigurare am?</button>
+                <button class="chat-q" data-ans="Standardul internațional: Check-in la ora 14:00, Check-out la ora 11:00.">🏨 Ora de Check-in?</button>
+                <button class="chat-q" data-ans="Avem o selecție de hoteluri pet-friendly. Sună-ne pentru a găsi cea mai bună opțiune.">🐶 Pot lua câinele?</button>
+                <button class="chat-q" data-ans="La rezervare primești un număr de WhatsApp de urgență disponibil 24/7.">📞 Suport în vacanță?</button>
+                <button class="chat-q" data-ans="Pentru Bali, Sri Lanka sau Egipt, viza se obține online sau direct la sosire în aeroport.">🛂 E nevoie de viză?</button>
+                <button class="chat-q" data-ans="Da, dar modificarea numelui implică taxe percepute de compania aeriană (50€ - 150€).">✏️ Pot schimba numele?</button>
+                <button class="chat-q" data-ans="Acceptăm tichete (Sodexo, Edenred, Up) EXCLUSIV pentru cazările din România.">🎫 Vouchere vacanță?</button>
+                <button class="chat-q" data-ans="Documentele finale (bilete, vouchere) vin pe e-mail cu 3-5 zile înainte de plecare.">📧 Cum primesc biletele?</button>
+                <button class="chat-q" data-ans="Zborurile charter sunt zboruri directe închiriate pentru destinațiile de vacanță. Orarele se pot modifica.">🛫 Ce e un zbor charter?</button>
+            </div>
+            <div id="chatHistory" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2>Conectare / Log-in</h2>
+            <form action="#" method="POST">
+                <div class="form-group"><label>Adresa de e-mail</label><input type="email" placeholder="Introdu e-mailul" required></div>
+                <div class="form-group"><label>Parolă</label><input type="password" placeholder="Introdu parola" required></div>
+                <div class="checkbox-group"><input type="checkbox" id="remMe"><label for="remMe">Salvează parola</label></div>
+                <button type="submit" class="nav-btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px; font-size: 16px;">Conectare</button>
+                <div class="modal-footer"><a href="#">Am uitat parola</a><a href="#">Sign up (Cont nou)</a></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-content detail-modal">
+            <span id="closeDetails" class="close-btn">&times;</span>
+            <div class="modal-hero-img" id="modalImg"></div>
+            <div class="modal-body">
+                <div class="modal-header-info">
+                    <h2 id="modalTitle">Titlu</h2>
+                    <div class="rating" id="modalRating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item"><span class="info-label">Preț per persoană</span><span class="info-value price-highlight" id="modalPrice">0 €</span></div>
+                    <div class="info-item"><span class="info-label">Ce include:</span><ul class="include-list" id="modalIncludes"></ul></div>
+                </div>
+                <p class="cancellation-text" style="margin-top: 20px;">❌ <b>Anulare gratuită</b> cu până la 48h înainte de plecare.</p>
+                <button class="nav-btn btn-primary" style="width: 100%; padding: 15px; font-size: 18px; margin-top: 20px;">Rezervă acum</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="blogModal" class="modal-overlay">
+        <div class="modal-content detail-modal" style="max-width: 700px;">
+            <span id="closeBlog" class="close-btn">&times;</span>
+            <div class="modal-hero-img" id="blogModalImg"></div>
+            <div class="modal-body">
+                <span id="blogModalTag" class="blog-tag" style="margin-bottom: 10px; display:inline-block; background: #00B4D8; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px;">Tag</span>
+                <h2 id="blogModalTitle" style="color:#0A192F; margin-bottom: 20px; font-size: 28px;">Titlu Articol</h2>
+                <div id="blogModalFullContent" style="color: #475569; font-size: 16px; line-height: 1.8; overflow-y: auto; max-height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
