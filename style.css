@@ -24,6 +24,23 @@ ul { list-style: none; }
     margin: 0 auto;
     padding: 0 20px;
 }
+/* Adaugă doar clasa asta lângă cea existentă */
+.nav-container, .nav-container-centered { 
+    display: grid; 
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+
+/* Asigură-te că meniul e pe coloana din mijloc */
+.nav-categories { 
+    grid-column: 2; 
+    display: flex; 
+    gap: 25px; 
+    justify-content: center; 
+}
 
 .nav-left { display: flex; justify-content: flex-start; }
 .nav-center { display: flex; justify-content: center; }
