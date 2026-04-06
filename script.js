@@ -235,29 +235,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         if(!priceFilter) return;
+        
+        // 1. Preluăm valoarea din slider
         const maxPrice = parseInt(priceFilter.value);
         if(priceValue) priceValue.innerText = maxPrice + '€';
+
+        // 2. Preluăm criteriile de filtrare
         const checkedStars = Array.from(starChecks).filter(cb => cb.checked).map(cb => cb.value);
         const selectedMeal = mealFilter ? mealFilter.value : 'Toate';
 
+        // 3. Iterăm prin toate cardurile
         document.querySelectorAll('.results-area .card').forEach(card => {
-            const priceElement = card.querySelector('.price-new');
+            // EXTRAGERE PREȚ (Căutăm în mai multe locuri posibile ca să fim siguri)
+            const priceElement = card.querySelector('.price-new') || card.querySelector('.card-price div') || card.querySelector('.card-price');
+            
             if(!priceElement) return;
+
+            // Curățăm prețul de orice simbol (€, spații, puncte)
             const price = parseInt(priceElement.innerText.replace(/[^0-9]/g, ''));
+            
+            // Extragere atribute
             const stars = card.getAttribute('data-stars');
             const meal = card.getAttribute('data-meal');
-            const matchesPrice = price <= maxPrice;
-            const matchesStars = checkedStars.includes(stars) || !stars; 
+
+            // LOGICĂ FILTRARE
+            const matchesPrice = isNaN(price) || price <= maxPrice;
+            
+            // Dacă nu e bifată nicio stea, le arătăm pe toate. Dacă sunt bifate, verificăm dacă se potrivește.
+            const matchesStars = checkedStars.length === 0 || checkedStars.includes(stars);
+            
+            // Verificare masă
             const matchesMeal = selectedMeal === 'Toate' || selectedMeal === meal || !meal;
-            card.style.display = (matchesPrice && matchesStars && matchesMeal) ? 'block' : 'none';
+
+            // AFIȘARE / ASCUNDERE
+            if (matchesPrice && matchesStars && matchesMeal) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
         });
     }
 
+    // Evenimente pentru actualizare în timp real
     if (priceFilter) priceFilter.addEventListener('input', applyFilters);
     if (starChecks) starChecks.forEach(cb => cb.addEventListener('change', applyFilters));
     if (mealFilter) mealFilter.addEventListener('change', applyFilters);
     if (applyBtn) applyBtn.addEventListener('click', applyFilters);
-
     // ================= 6. ROBOTEL DE CHAT =================
     const chatBtn = document.getElementById('chatBtn');
     const chatBox = document.getElementById('chatBox');
