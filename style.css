@@ -463,3 +463,128 @@ img {
     max-width: 100%;
     height: auto;
 }
+/* ================= FIX UNIVERSAL RESPONSIVE (V2) ================= */
+
+/* 1. Blocăm fuga orizontală a site-ului */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    
+    /* 2. NAVBAR: Logo-ul sus, categoriile scrollabile sub el */
+    .nav-container-centered {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        padding: 10px 0 !important;
+        gap: 10px;
+    }
+    
+    .nav-categories {
+        display: flex !important;
+        overflow-x: auto !important;
+        width: 100vw;
+        padding: 10px 20px !important;
+        gap: 20px;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        border-top: 1px solid #eee;
+        background: #fff;
+    }
+    
+    .nav-categories::-webkit-scrollbar { display: none; }
+
+    /* 3. HERO & SEARCH BAR: Reparăm butonul mare și înălțimea */
+    .hero {
+        padding: 30px 15px 50px !important;
+        height: auto !important;
+        min-height: unset !important;
+    }
+
+    .search-bar {
+        width: 100% !important;
+        flex-direction: column !important;
+        padding: 10px !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+
+    .search-field {
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 12px 10px !important;
+        text-align: left;
+    }
+
+    .search-btn-large {
+        width: 100% !important;
+        margin: 10px 0 0 0 !important;
+        height: 55px !important;
+        font-size: 16px !important;
+    }
+
+    /* 4. SIDEBAR FIX: Nu mai este STICKY (nu mai "urmărește" ecranul pe mobil) */
+    .main-layout {
+        display: block !important; /* Dezactivăm flex-ul care le ținea lângă */
+        padding: 0 15px;
+    }
+
+    .sidebar-filters {
+        position: relative !important; /* Îl facem să stea în fluxul paginii */
+        top: 0 !important; /* Resetăm orice distanță de sus */
+        width: 100% !important; /* Ocupă tot latul */
+        margin-bottom: 30px !important;
+        display: block !important;
+        z-index: 5;
+    }
+    
+    .filter-card {
+        padding: 20px !important;
+        box-shadow: none !important;
+        border: 1px solid #E2E8F0 !important;
+        height: auto !important;
+    }
+
+    /* Reparăm titlul "Filtrează" să fie vizibil clar */
+    .sidebar-filters h3 {
+        display: block !important;
+        margin-top: 0 !important;
+        font-size: 20px !important;
+        color: #0A192F !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* 5. REZULTATE: Grila de carduri devine 1 pe rând */
+    .results-area {
+        width: 100% !important;
+    }
+
+    .cards-grid, .results-area .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 0 !important;
+    }
+
+    /* 6. FIX TRUST BAR (Avantaje) */
+    .trust-bar-index {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    /* 7. TEXTE GENERALE */
+    h1 { font-size: 26px !important; }
+    .section-title { font-size: 22px !important; margin: 40px 0 20px !important; }
+}
+
+/* Prevenim ca orice element să forțeze lățimea mai mare de 100% */
+* {
+    box-sizing: border-box;
+}
