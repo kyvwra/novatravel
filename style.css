@@ -99,13 +99,14 @@ ul { list-style: none; }
     background: #00B4D8;
 }
 
-/* Acțiunile navigației (dacă vrei să le activezi vreodată, altfel stau ascunse acum) */
+/* Acțiunile navigației */
 .nav-actions { display: flex; gap: 15px; align-items: center; }
 .nav-btn { font-family: inherit; font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: 0.3s; border: none; outline: none;}
 .btn-ghost { background: transparent; border: 1px solid #CBD5E1; color: #334155; }
 .btn-ghost:hover { border-color: #00B4D8; color: #00B4D8; background: #F0F9FF; }
 .btn-primary { background: #00B4D8; border: 1px solid #00B4D8; color: white; }
 .btn-primary:hover { background: #0096B4; border-color: #0096B4; }
+
 /* ================= HERO & SEARCH ================= */
 .hero { background: linear-gradient(135deg, #0A192F, #00B4D8); padding: 80px 20px 100px; display: flex; align-items: center; justify-content: center; }
 .hero-minimal { min-height: 200px; padding: 60px 20px; background: linear-gradient(135deg, #0A192F, #00B4D8); color: white; text-align: center; }
@@ -136,7 +137,7 @@ ul { list-style: none; }
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
 .green { background: #10B981; } .orange { background: #F59E0B; } .red { background: #EF4444; }
 
-/* FIX BUTOANE + ȘI - (Mai mari, pătrate rotunjite, ușor de apăsat) */
+/* FIX BUTOANE + ȘI - */
 .counter-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 15px; font-weight: 600; }
 .counter-controls { display: flex; align-items: center; gap: 15px; }
 .btn-count { 
@@ -164,7 +165,7 @@ ul { list-style: none; }
     transform: scale(0.92);
 }
 
-/* FIX PROMO GAȘCĂ (Transformare într-un banner tip Buton direct din CSS) */
+/* FIX PROMO GAȘCĂ */
 .hub-gasca-promo { 
     background: linear-gradient(135deg, #10B981, #059669); 
     border: none;
@@ -184,7 +185,6 @@ ul { list-style: none; }
     transform: translateY(-3px); 
     box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); 
 }
-/* Aici generăm butonul din interior fără să ne atingem de HTML! */
 .hub-gasca-promo::after {
     content: 'Caută cazare pentru grup →';
     display: block;
@@ -201,7 +201,7 @@ ul { list-style: none; }
     background: #F0FDF4;
 }
 
-/* ================= TRUST BAR (CENTRARE MATEMATICĂ) ================= */
+/* ================= TRUST BAR ================= */
 .trust-bar-index { 
     display: flex !important; 
     justify-content: center !important; 
@@ -427,13 +427,15 @@ img { max-width: 100%; height: auto; }
         justify-content: center !important; 
         width: 100% !important; 
         gap: 15px !important; 
-        /* ================= FIX BUTOANE + / - PE TELEFON ================= */
+    } 
+
+    /* ================= FIX BUTOANE + / - PE TELEFON ================= */
     .counter-controls button, .btn-count {
-        width: 50px !important; /* Uriașe, perfecte pentru deget */
+        width: 50px !important; 
         height: 50px !important;
-        font-size: 28px !important; /* Semnele + și - mult mai vizibile */
+        font-size: 28px !important; 
         border-radius: 12px !important;
-        background: #F0F9FF !important; /* Un fundal albăstrui să iasă în evidență */
+        background: #F0F9FF !important; 
         border: 2px solid #00B4D8 !important;
         color: #00B4D8 !important;
         display: flex !important;
@@ -450,7 +452,6 @@ img { max-width: 100%; height: auto; }
         box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5) !important;
     }
 
-    /* Transformăm textul într-un buton masiv și clar pe mobil */
     .hub-gasca-promo::after {
         content: 'CAUTĂ CAZARE GRUP →' !important;
         display: block !important;
@@ -461,7 +462,6 @@ img { max-width: 100%; height: auto; }
         border-radius: 10px !important;
         font-weight: 900 !important;
         font-size: 16px !important;
-    }
     }
     
     .nav-left { order: 1 !important; width: 100% !important; justify-content: center !important; }
@@ -510,17 +510,20 @@ img { max-width: 100%; height: auto; }
     .footer-brand, .contact-info li { justify-content: center !important; }
     .footer-bottom { flex-direction: column; text-align: center; }
 
-    /* TRUST BAR PE MOBIL */
+    /* TRUST BAR PE MOBIL - REPARAT SI CENTRAT PERFECT */
     .trust-bar-index { 
         flex-direction: column !important; 
-        gap: 25px !important; 
+        gap: 30px !important; 
         text-align: center !important; 
         padding: 20px !important;
     }
     
     .trust-item {
         width: 100% !important;
+        flex-direction: column !important; /* Pune iconița deasupra textului pe telefon */
         justify-content: center !important; 
+        align-items: center !important;
+        gap: 10px !important;
     }
 
     .trust-text { text-align: center !important; }
